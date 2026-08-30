@@ -472,24 +472,6 @@ tr:nth-child(even) td {
   background: #fff8eb;
 }
 
-.shortlist {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
-
-.short-card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 14px;
-  border: 2px solid #ffd166;
-}
-
-.cut {
-  background: #fff5f2;
-  border-color: #f4a261;
-}
-
 footer {
   padding: 20px 0 40px;
   color: var(--muted);
@@ -500,7 +482,6 @@ footer {
   .grid-2,
   .grid-3,
   .cards,
-  .shortlist,
   .weather-grid {
     grid-template-columns: 1fr;
   }
