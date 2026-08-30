@@ -40,10 +40,29 @@
         <a href="#recommend">Recommendation</a>
         <a href="#dates">Early vs late May</a>
         <a href="#locations">Locations</a>
+        <a href="#vote">Vote</a>
         <a href="#table">Score table</a>
         <a href="#next">Next steps</a>
       </div>
     </nav>
+
+    <div class="voter-wrap" id="vote">
+      <div class="wrap voter-bar">
+        <label for="voter-name">Your name</label>
+        <input
+          id="voter-name"
+          type="text"
+          autocomplete="name"
+          placeholder="e.g. Sam"
+          maxlength="40"
+        />
+        <p>
+          Type your name, then +1 or −1 on any location card. Totals are shared
+          with everyone on this link. Click the same button again to clear your
+          vote.
+        </p>
+      </div>
+    </div>
 
     <main class="wrap">
       <section id="weather" class="weather-banner">
@@ -285,35 +304,35 @@
           </div>
           <div class="climate"><strong>30 Apr–early May:</strong> days 17–20°C, nights 8–12°C, sea 14–16°C, around 6 hours of sun and a fair chance of a shower. Pack layers. The sea will feel cold to most of the group.</div>
           <div class="cards">
-            <article class="card">
+            <article class="card" data-place="calella">
               <span class="badge badge-in">Shortlist</span>
               <h3>Calella</h3>
               <p class="where">UK flight about 2 hours 15 minutes to Girona or Barcelona.<br />Girona is then about 45–60 minutes by road to the resort; Barcelona is about 1 hour 15 minutes.</p>
               <div class="scores" data-scores="4,4,3,5,5,3"></div>
               <p class="verdict">Proper town, not just a hotel strip. Hospital Sant Jaume is in Calella. Promenade, shops, pharmacy, trains along the coast. Beach is a long urban sandy stretch — decent, not wild. Strongest amenities score on this coast.</p>
             </article>
-            <article class="card">
+            <article class="card" data-place="malgrat-de-mar">
               <span class="badge badge-in">Shortlist</span>
               <h3>Malgrat de Mar</h3>
               <p class="where">UK flight about 2 hours 15 minutes to Girona or Barcelona.<br />Girona is then about 45–60 minutes by road to the resort; Barcelona is about 1 hour 15 minutes.</p>
               <div class="scores" data-scores="4,4,4,4,5,3"></div>
               <p class="verdict">Wide sandy beach, close to the water, package hotels, supermarket and pharmacy in town, Calella hospital a short hop. Very similar to Santa Susanna; pick whichever hotel block can take the group.</p>
             </article>
-            <article class="card">
+            <article class="card" data-place="santa-susanna">
               <span class="badge badge-in">Shortlist</span>
               <h3>Santa Susanna</h3>
               <p class="where">UK flight about 2 hours 15 minutes to Girona or Barcelona.<br />Girona is then about 45–60 minutes by road to the resort; Barcelona is about 1 hour 15 minutes.</p>
               <div class="scores" data-scores="4,4,3,4,5,3"></div>
               <p class="verdict">Purpose-built British-friendly strip. Easy for a large group that wants to walk between hotel, beach and a few bars. Slightly less “real town” than Calella or Malgrat. Same hospital and weather story.</p>
             </article>
-            <article class="card">
+            <article class="card" data-place="lloret-de-mar">
               <span class="badge badge-talk">Discuss</span>
               <h3>Lloret de Mar</h3>
               <p class="where">UK flight about 2 hours 15 minutes to Girona or Barcelona.<br />Girona is then about 35–45 minutes by road to the resort; Barcelona is about 1 hour 20 minutes.</p>
               <div class="scores" data-scores="3,4,3,5,5,3"></div>
               <p class="verdict">Best nightlife and most shops on this coast, Hospital de Blanes nearby. For a mixed 20–30 group it can feel loud, drink-heavy and a bit seedy on the main strip. Only poll this if the committee wants a livelier trip.</p>
             </article>
-            <article class="card">
+            <article class="card" data-place="tossa-de-mar">
               <span class="badge badge-talk">Discuss</span>
               <h3>Tossa de Mar</h3>
               <p class="where">UK flight about 2 hours 15 minutes to Girona or Barcelona.<br />Girona is then about 50–60 minutes by road to the resort; Barcelona is about 1 hour 30 minutes.</p>
@@ -332,7 +351,7 @@
             <span class="badge badge-in">Fuengirola is the pick</span>
           </div>
           <div class="cards">
-            <article class="card">
+            <article class="card" data-place="fuengirola">
               <span class="badge badge-in">Shortlist</span>
               <h3>Fuengirola</h3>
               <p class="where">UK flight about 2 hours 45 minutes to Malaga.<br />Then about 25–35 minutes by road to the resort.</p>
@@ -340,7 +359,7 @@
               <div class="scores" data-scores="4,5,3,5,5,4"></div>
               <p class="verdict">Long sandy urban beach, huge supermarket and pharmacy choice, English widely spoken, public and private hospitals on the Costa del Sol used to UK patients. GHIC/EHIC in public hospitals; hotels may still send you private, so insurance stays essential. Food is ordinary tourist-Spanish but with real Spanish town options behind the front.</p>
             </article>
-            <article class="card">
+            <article class="card" data-place="salou">
               <span class="badge badge-talk">Discuss</span>
               <h3>Salou</h3>
               <p class="where">UK flight about 2 hours 15 minutes to Reus or Barcelona.<br />Reus is then about 15–25 minutes by road to the resort; Barcelona is about 1 hour 20 minutes.</p>
@@ -348,7 +367,7 @@
               <div class="scores" data-scores="4,4,4,4,4,3"></div>
               <p class="verdict">Good sandy beach and a proper resort strip. Reus can be a handy short flight; Barcelona makes the transfer long. Family-plus-nightlife mix, PortAventura nearby. Hospitals in Reus or Tarragona. Fine if a cheap Reus flight appears, otherwise Fuengirola is cleaner for a short trip.</p>
             </article>
-            <article class="card">
+            <article class="card" data-place="oropesa-del-mar">
               <span class="badge badge-talk">Discuss</span>
               <h3>Oropesa del Mar</h3>
               <p class="where">UK flight about 2 hours 15 minutes to Valencia, or sometimes Castellón.<br />Valencia is then about 1 hour 15 minutes by road to the resort; Castellón is about 45–60 minutes.</p>
@@ -369,35 +388,35 @@
           </div>
           <div class="climate"><strong>30 Apr–early May:</strong> days 19–22°C, nights 11–14°C, sea 16–18°C. Often brighter than Costa Brava. After a 2 hour 30 minute flight to Palma, the east-coast resorts are still more than an hour away by road.</div>
           <div class="cards">
-            <article class="card">
+            <article class="card" data-place="cala-millor">
               <span class="badge badge-in">Shortlist</span>
               <h3>Cala Millor</h3>
               <p class="where">UK flight about 2 hours 30 minutes to Palma.<br />Then about 1 hour 10 minutes by road across the island to the resort.</p>
               <div class="scores" data-scores="4,3,5,4,4,3"></div>
               <p class="verdict">Long pale sandy beach, the classic east-coast package resort. Shops, pharmacy and a walkable front. Hospital de Manacor is the local general hospital; Palma for major trauma. Best beach-plus-amenities mix on the island list.</p>
             </article>
-            <article class="card">
+            <article class="card" data-place="sa-coma">
               <span class="badge badge-in">Shortlist</span>
               <h3>Sa Coma</h3>
               <p class="where">UK flight about 2 hours 30 minutes to Palma.<br />Then about 1 hour 5 minutes by road across the island to the resort, next door to Cala Millor.</p>
               <div class="scores" data-scores="4,3,5,4,4,3"></div>
               <p class="verdict">Quieter sister of Cala Millor, still a proper sandy bay, still walkable. Good if the group wants the same beach quality with less strip noise. Treat as interchangeable with Cala Millor when you poll.</p>
             </article>
-            <article class="card">
+            <article class="card" data-place="cala-d-or">
               <span class="badge badge-talk">Discuss</span>
               <h3>Cala d'Or</h3>
               <p class="where">UK flight about 2 hours 30 minutes to Palma.<br />Then about 1 hour by road to the south-east coves.</p>
               <div class="scores" data-scores="4,3,5,3,4,4"></div>
               <p class="verdict">Smaller sandy coves and a nicer harbour-town feel. Food a bit better. Worse for a large group: the resort is spread across several calas, so people get split. Keep only if two hotels sit together.</p>
             </article>
-            <article class="card">
+            <article class="card" data-place="cala-ratjada">
               <span class="badge badge-talk">Discuss</span>
               <h3>Cala Ratjada</h3>
               <p class="where">UK flight about 2 hours 30 minutes to Palma.<br />Then about 1 hour 25 to 1 hour 40 minutes by road to the north-east tip — the longest Mallorca transfer on this list.</p>
               <div class="scores" data-scores="4,2,4,4,4,3"></div>
               <p class="verdict">Real harbour town with shops and a mix of beaches. Transfer from Palma is the longest of the island set, which hurts a three-night trip. Otherwise perfectly usable.</p>
             </article>
-            <article class="card">
+            <article class="card" data-place="cales-de-mallorca">
               <span class="badge badge-out">Park</span>
               <h3>Cales de Mallorca</h3>
               <p class="where">UK flight about 2 hours 30 minutes to Palma.<br />Then about 1 hour 10 minutes by road to a more isolated east-coast hotel pocket.</p>
@@ -416,7 +435,7 @@
             <span class="badge badge-out">Park for this date</span>
           </div>
           <div class="cards">
-            <article class="card">
+            <article class="card" data-place="callao-salvaje">
               <span class="badge badge-out">Park</span>
               <h3>Callao Salvaje</h3>
               <p class="where">UK flight about 4 hours 30 minutes to Tenerife South.<br />Then about 20–30 minutes by road to the resort.</p>
@@ -424,7 +443,7 @@
               <div class="scores" data-scores="4,2,2,2,4,3"></div>
               <p class="verdict">Quiet residential / villa area, not Los Cristianos. Playa de Ajabo is a small rebuilt beach, not a wide sandy bay. Shops are limited; Costa Adeje hospitals (Hospiten Sur and similar) are a drive, not a stroll. GHIC/EHIC works in public care. For this group, the climate is excellent and the named resort is a poor match.</p>
             </article>
-            <article class="card">
+            <article class="card" data-place="nuevo-horizonte">
               <span class="badge badge-out">Park</span>
               <h3>Nuevo Horizonte</h3>
               <p class="where">UK flight about 4 hours 15 minutes to Fuerteventura.<br />Then about 15–25 minutes by road to Nuevo Horizonte.</p>
@@ -444,7 +463,7 @@
             <span class="badge badge-in">Poll Crete</span>
           </div>
           <div class="cards">
-            <article class="card">
+            <article class="card" data-place="adelianos-kampos">
               <span class="badge badge-in">Shortlist</span>
               <h3>Adelianos Kampos</h3>
               <p class="where">UK flight about 3 hours 45 minutes to Heraklion or Chania.<br />Heraklion is then about 1 hour 15 minutes by road to Adelianos Kampos; Chania is about 1 hour.</p>
@@ -452,7 +471,7 @@
               <div class="scores" data-scores="4,3,3,4,4,5"></div>
               <p class="verdict">Sandy/shingle resort beach next to a real town (Rethymno) with shops, pharmacies and tavernas. General hospital in Rethymno; GHIC/EHIC in state care. Island hospitals are more limited than mainland Spain, and FCDO notes island ambulance gaps, so insurance still matters. Best food on the list.</p>
             </article>
-            <article class="card">
+            <article class="card" data-place="dassia">
               <span class="badge badge-talk">Discuss</span>
               <h3>Dassia</h3>
               <p class="where">UK flight about 3 hours 15 minutes to Corfu.<br />Then about 15–25 minutes by road to Dassia.</p>
@@ -473,35 +492,35 @@
           </div>
           <div class="climate"><strong>30 Apr–early May:</strong> days 21–25°C, nights 12–16°C, sea 18–20°C and rising. Among the best swim chances after the Canaries. Evenings can still need a jumper inland or at Kemer.</div>
           <div class="cards">
-            <article class="card">
+            <article class="card" data-place="side">
               <span class="badge badge-in">Shortlist</span>
               <h3>Side</h3>
               <p class="where">UK flight about 4 hours to Antalya.<br />Then about 1 hour to 1 hour 15 minutes by road to Side.</p>
               <div class="scores" data-scores="3,3,4,4,3,4"></div>
               <p class="verdict">Sandy bays, a pleasant old town, plenty of all-inclusive hotels used to UK groups. Shops and pharmacies in the resort. Manavgat / Side hospitals and private clinics; GHIC is not valid. British prescriptions are not accepted in Turkish pharmacies. Strongest “warm beach plus group hotel” option.</p>
             </article>
-            <article class="card">
+            <article class="card" data-place="alanya">
               <span class="badge badge-in">Shortlist</span>
               <h3>Alanya</h3>
               <p class="where">UK flight about 4 hours to Antalya.<br />Then about 2 hours by road to Alanya — a long transfer after a long flight.</p>
               <div class="scores" data-scores="3,2,4,5,3,4"></div>
               <p class="verdict">Bigger working town: easier to buy food, drinks and medicine than a pure resort. Long sandy/pebble mix beaches. Transfer from Antalya is the longest of the Turkey set and hurts a three-night trip. Same healthcare rules as Side.</p>
             </article>
-            <article class="card">
+            <article class="card" data-place="kemer">
               <span class="badge badge-talk">Discuss</span>
               <h3>Kemer</h3>
               <p class="where">UK flight about 4 hours to Antalya.<br />Then about 40–50 minutes by road to Kemer.</p>
               <div class="scores" data-scores="3,3,3,3,3,4"></div>
               <p class="verdict">Closer to Antalya airport than Alanya. Beaches are more mixed (pebble, imported sand, hotel platforms). Feels more “compound hotel” than town. Fine if the group wants to stay put.</p>
             </article>
-            <article class="card">
+            <article class="card" data-place="marmaris">
               <span class="badge badge-talk">Discuss</span>
               <h3>Marmaris</h3>
               <p class="where">UK flight about 4 hours to Dalaman.<br />Then about 1 hour 20 to 1 hour 40 minutes by a winding road to Marmaris.</p>
               <div class="scores" data-scores="3,3,3,5,3,4"></div>
               <p class="verdict">Proper town amenities and nightlife. Beach in the centre is ordinary; Icmeler nearby is better. Dalaman flight plus a winding transfer. Livelier than Side, slightly weaker as a beach holiday.</p>
             </article>
-            <article class="card">
+            <article class="card" data-place="oludeniz">
               <span class="badge badge-talk">Discuss</span>
               <h3>Ölüdeniz</h3>
               <p class="where">UK flight about 4 hours to Dalaman.<br />Then about 50–70 minutes by road to Ölüdeniz.</p>
@@ -520,7 +539,7 @@
             <span class="badge badge-out">Do not poll first</span>
           </div>
           <div class="cards">
-            <article class="card">
+            <article class="card" data-place="sousse">
               <span class="badge badge-out">Park</span>
               <h3>Sousse</h3>
               <p class="where">UK flight about 3 hours to Monastir or Enfidha.<br />Monastir is then about 20–30 minutes by road to Sousse; Enfidha is about 45–60 minutes.</p>
@@ -528,7 +547,7 @@
               <div class="scores" data-scores="2,3,3,4,2,3"></div>
               <p class="verdict">FCDO advises against travel to parts of Tunisia (not the Sousse resort strip itself, but insurance questions will come up). No free care for visitors — pay on the spot, sometimes before treatment. Sahloul hospital and private clinics exist. Food hygiene needs more care than Spain. A large mixed group will spend more time on risk debate than on the beach.</p>
             </article>
-            <article class="card">
+            <article class="card" data-place="djerba">
               <span class="badge badge-out">Park</span>
               <h3>Djerba</h3>
               <p class="where">UK flight about 3 hours 15 minutes to Djerba.<br />Then about 20–40 minutes by road to the hotel zone.</p>
@@ -536,7 +555,7 @@
               <div class="scores" data-scores="2,3,4,3,2,3"></div>
               <p class="verdict">Better beaches than Sousse, more isolated hotel zone. Same healthcare and FCDO-context issues. Houmt Souk hospital is basic; serious cases mean evacuation planning via insurance.</p>
             </article>
-            <article class="card">
+            <article class="card" data-place="agadir">
               <span class="badge badge-out">Park</span>
               <h3>Agadir</h3>
               <p class="where">UK flight about 3 hours 45 minutes to Agadir.<br />Then about 20–30 minutes by road to the beach hotels.</p>
@@ -556,7 +575,7 @@
             <span class="badge badge-out">Do not poll first</span>
           </div>
           <div class="cards">
-            <article class="card">
+            <article class="card" data-place="durres">
               <span class="badge badge-out">Park</span>
               <h3>Durrës</h3>
               <p class="where">UK flight about 3 hours to Tirana.<br />Then about 40–50 minutes by road to Durrës.</p>
@@ -564,7 +583,7 @@
               <div class="scores" data-scores="2,3,2,4,2,3"></div>
               <p class="verdict">Long urban beach of mixed cleanliness. City amenities are actually good. FCDO is blunt: medical facilities are very poor outside Tirana, tap water is not safe, no GHIC. American Hospital has a Durres clinic; serious care still means Tirana or evacuation. Too many health caveats for a first group trip.</p>
             </article>
-            <article class="card">
+            <article class="card" data-place="sunny-beach">
               <span class="badge badge-out">Park</span>
               <h3>Sunny Beach</h3>
               <p class="where">UK flight about 3 hours 15 minutes to Burgas.<br />Then about 25–40 minutes by road to Sunny Beach.</p>
@@ -688,20 +707,5 @@
       </div>
     </footer>
     <script type="module" src="/main.js"></script>
-    <script>
-      const labels = ["Health & safety", "Transport", "Beach", "Amenities", "Hospital", "Food"];
-      document.querySelectorAll("[data-scores]").forEach((el) => {
-        const nums = el.dataset.scores.split(",").map(Number);
-        el.innerHTML = nums
-          .map((n, i) => {
-            const tone = n >= 4 ? "good" : n === 3 ? "ok" : "poor";
-            const dots = [1, 2, 3, 4, 5]
-              .map((d) => `<span class="dot${d <= n ? " on-" + tone : ""}"></span>`)
-              .join("");
-            return `<div class="score"><span>${labels[i]}</span><span class="dots">${dots}</span><b>${n}/5</b></div>`;
-          })
-          .join("");
-      });
-    </script>
   </body>
 </html>
