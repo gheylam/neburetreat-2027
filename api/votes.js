@@ -61,11 +61,18 @@ function fieldKey(voter, place) {
   return `${voter}::${place}`;
 }
 
+function firstLetter(name) {
+  const match = String(name || "").trim().match(/[a-z0-9]/i);
+  return match ? match[0].toUpperCase() : "?";
+}
+
 function summarise(entries, voter) {
   const totals = {};
   const mine = {};
+  const voters = {};
   for (const place of PLACES) {
     totals[place] = 0;
+    voters[place] = [];
   }
   for (const [field, raw] of Object.entries(entries || {})) {
     const sep = field.lastIndexOf("::");
@@ -76,9 +83,16 @@ function summarise(entries, voter) {
     const value = Number(raw);
     if (value !== 1 && value !== -1) continue;
     totals[place] += value;
+    voters[place].push({ initial: firstLetter(who), vote: value });
     if (voter && who === voter) mine[place] = value;
   }
-  return { totals, mine };
+  for (const place of PLACES) {
+    voters[place].sort((a, b) => {
+      if (b.vote !== a.vote) return b.vote - a.vote;
+      return a.initial.localeCompare(b.initial);
+    });
+  }
+  return { totals, mine, voters };
 }
 
 export default async function handler(req, res) {

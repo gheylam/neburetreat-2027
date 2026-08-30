@@ -191,6 +191,7 @@ nav {
 
 .vote-bar {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 10px;
   margin-top: 14px;
@@ -236,6 +237,38 @@ nav {
   text-align: center;
   font-weight: 800;
   font-size: 1.15rem;
+}
+
+.vote-who {
+  flex: 1 1 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.vote-who[hidden] {
+  display: none;
+}
+
+.vote-initial {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.vote-initial.plus {
+  background: #d8f3dc;
+  color: #1b4332;
+}
+
+.vote-initial.minus {
+  background: #ffd6d0;
+  color: #7a2410;
 }
 
 section {

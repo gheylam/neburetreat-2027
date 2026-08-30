@@ -37,6 +37,7 @@ cards.forEach((card) => {
     <button type="button" class="vote-btn vote-minus" data-vote="-1" aria-label="Minus one" disabled>−</button>
     <span class="vote-total">0</span>
     <button type="button" class="vote-btn vote-plus" data-vote="1" aria-label="Plus one" disabled>+</button>
+    <span class="vote-who" hidden></span>
   `;
   card.appendChild(bar);
 });
@@ -56,13 +57,26 @@ function setBusy(busy) {
 function paint(data) {
   const totals = data.totals || {};
   const mine = data.mine || {};
+  const voters = data.voters || {};
   cards.forEach((card) => {
     const place = card.dataset.place;
     const total = Number(totals[place] || 0);
     const myVote = Number(mine[place] || 0);
+    const list = voters[place] || [];
     card.querySelector(".vote-total").textContent = String(total);
     card.querySelector(".vote-minus").classList.toggle("is-mine", myVote === -1);
     card.querySelector(".vote-plus").classList.toggle("is-mine", myVote === 1);
+    const who = card.querySelector(".vote-who");
+    who.replaceChildren();
+    list.forEach((entry) => {
+      const mark = document.createElement("span");
+      const plus = Number(entry.vote) === 1;
+      mark.className = `vote-initial ${plus ? "plus" : "minus"}`;
+      mark.textContent = entry.initial || "?";
+      mark.title = plus ? "Plus" : "Minus";
+      who.appendChild(mark);
+    });
+    who.hidden = list.length === 0;
   });
 }
 
