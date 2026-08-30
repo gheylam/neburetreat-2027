@@ -17,6 +17,8 @@ Then open [http://127.0.0.1:43147](http://127.0.0.1:43147).
 
 Print the page if you want a paper copy for the committee.
 
+Shared +/− votes on the live site need the Vercel Redis store connected to the project. Local `npm run dev` shows the cards but cannot share votes unless you use `vercel dev`.
+
 ## What the committee is asked to do
 
 1. Decide whether weather or a short flight / easy hospital is the tie-break.

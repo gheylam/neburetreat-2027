@@ -1,4 +1,4 @@
-import { Redis } from "@upstash/redis";
+import { createClient } from "redis";
 
 const PLACES = new Set([
   "calella",
@@ -32,14 +32,21 @@ const PLACES = new Set([
 
 const HASH_KEY = "location-votes";
 
-function redis() {
-  const url = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
-  const token =
-    process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
-  if (!url || !token) {
+let cached;
+
+async function redis() {
+  if (cached?.isOpen) return cached;
+  const url =
+    process.env.REDIS_URL ||
+    process.env.UPSTASH_REDIS_REST_URL ||
+    process.env.KV_REST_API_URL;
+  if (!url) {
     throw new Error("Redis is not configured");
   }
-  return new Redis({ url, token });
+  cached = createClient({ url });
+  cached.on("error", () => {});
+  await cached.connect();
+  return cached;
 }
 
 function nameKey(name) {
@@ -78,16 +85,17 @@ export default async function handler(req, res) {
   res.setHeader("Cache-Control", "no-store");
 
   try {
-    const db = redis();
+    const db = await redis();
 
     if (req.method === "GET") {
       const voter = nameKey(req.query.name);
-      const entries = (await db.hgetall(HASH_KEY)) || {};
+      const entries = (await db.hGetAll(HASH_KEY)) || {};
       return res.status(200).json(summarise(entries, voter));
     }
 
     if (req.method === "POST") {
-      const body = typeof req.body === "string" ? JSON.parse(req.body) : req.body || {};
+      const body =
+        typeof req.body === "string" ? JSON.parse(req.body) : req.body || {};
       const voter = nameKey(body.name);
       const place = String(body.place || "");
       const vote = Number(body.vote);
@@ -104,12 +112,12 @@ export default async function handler(req, res) {
 
       const field = fieldKey(voter, place);
       if (vote === 0) {
-        await db.hdel(HASH_KEY, field);
+        await db.hDel(HASH_KEY, field);
       } else {
-        await db.hset(HASH_KEY, { [field]: vote });
+        await db.hSet(HASH_KEY, field, String(vote));
       }
 
-      const entries = (await db.hgetall(HASH_KEY)) || {};
+      const entries = (await db.hGetAll(HASH_KEY)) || {};
       return res.status(200).json(summarise(entries, voter));
     }
 
