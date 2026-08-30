@@ -1,0 +1,435 @@
+:root {
+  --sand: #f6e6c3;
+  --sand-deep: #edd6a3;
+  --cream: #fff8eb;
+  --paper: #fffdf6;
+  --sun: #f4b942;
+  --sun-hot: #f08a24;
+  --coral: #e76f51;
+  --coral-soft: #f4a261;
+  --ocean: #1d7a8c;
+  --ocean-deep: #145c6b;
+  --teal: #2a9d8f;
+  --sky: #caf0f8;
+  --sky-mid: #90e0ef;
+  --palm: #2d6a4f;
+  --palm-light: #52b788;
+  --ink: #1b3a4b;
+  --ink-soft: #3d5a6c;
+  --muted: #6b7c86;
+  --line: rgba(27, 58, 75, 0.12);
+  --good: #2d6a4f;
+  --ok: #b7791f;
+  --poor: #9b3a2a;
+  --shadow: 0 10px 30px rgba(27, 58, 75, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Nunito", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(1200px 500px at 10% -10%, #ffe8a3 0%, transparent 55%),
+    radial-gradient(900px 400px at 100% 0%, #9be7e0 0%, transparent 50%),
+    linear-gradient(180deg, #fff3c4 0%, #e8f7f4 28%, #fff8eb 100%);
+  line-height: 1.55;
+}
+
+a {
+  color: var(--ocean);
+}
+
+.wrap {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.hero {
+  padding: 36px 0 20px;
+}
+
+.hero-card {
+  background: linear-gradient(135deg, #fffdf8 0%, #fff1c9 55%, #d8f4ef 100%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-card::after {
+  content: "";
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffd166 0%, transparent 70%);
+  opacity: 0.7;
+}
+
+.eyebrow {
+  display: inline-block;
+  background: #fff;
+  color: var(--ocean);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.1;
+}
+
+.lede {
+  font-size: 1.08rem;
+  max-width: 70ch;
+  color: var(--ink-soft);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.chip {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255, 248, 235, 0.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+  margin: 8px 0 28px;
+}
+
+.nav-row {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+.nav-row a {
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 0.92rem;
+  white-space: nowrap;
+  color: var(--ink-soft);
+}
+
+.nav-row a:hover {
+  color: var(--ocean);
+}
+
+section {
+  margin-bottom: 36px;
+}
+
+h2 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.8rem;
+  margin: 0 0 8px;
+}
+
+h3 {
+  font-family: "Fraunces", Georgia, serif;
+  margin: 0 0 8px;
+}
+
+.panel {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: var(--shadow);
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.note {
+  background: #fff6d8;
+  border-left: 5px solid var(--sun);
+  padding: 12px 14px;
+  border-radius: 12px;
+}
+
+.weather-banner {
+  background: linear-gradient(135deg, #1d7a8c, #2a9d8f);
+  color: #fff;
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: var(--shadow);
+}
+
+.weather-banner h2,
+.weather-banner p {
+  color: #fff;
+}
+
+.weather-banner p {
+  opacity: 0.95;
+}
+
+.weather-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.weather-tile {
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+  padding: 12px;
+}
+
+.weather-tile strong {
+  display: block;
+  font-size: 1.05rem;
+}
+
+.criteria li {
+  margin-bottom: 8px;
+}
+
+.group {
+  margin-top: 22px;
+}
+
+.group-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.badge {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.badge-in {
+  background: #d8f3dc;
+  color: #1b4332;
+}
+
+.badge-talk {
+  background: #ffe8c2;
+  color: #7a4e00;
+}
+
+.badge-out {
+  background: #ffd6d0;
+  color: #7a2410;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px;
+}
+
+.card h3 {
+  font-size: 1.2rem;
+}
+
+.card .where {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.scores {
+  display: grid;
+  gap: 6px;
+  margin: 12px 0;
+}
+
+.score {
+  display: grid;
+  grid-template-columns: 150px 1fr auto;
+  gap: 8px;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.dots {
+  display: flex;
+  gap: 4px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #e6e0d2;
+}
+
+.dot.on-good {
+  background: var(--palm-light);
+}
+
+.dot.on-ok {
+  background: var(--sun);
+}
+
+.dot.on-poor {
+  background: var(--coral);
+}
+
+.score b {
+  font-size: 0.78rem;
+}
+
+.climate {
+  background: #e8f7fb;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 0.92rem;
+  margin-bottom: 10px;
+}
+
+.verdict {
+  font-size: 0.92rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  background: var(--paper);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 10px 8px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+th {
+  background: #1d7a8c;
+  color: #fff;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+tr:nth-child(even) td {
+  background: #fff8eb;
+}
+
+.shortlist {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.short-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 14px;
+  border: 2px solid #ffd166;
+}
+
+.cut {
+  background: #fff5f2;
+  border-color: #f4a261;
+}
+
+footer {
+  padding: 20px 0 40px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+@media (max-width: 860px) {
+  .grid-2,
+  .grid-3,
+  .cards,
+  .shortlist,
+  .weather-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .score {
+    grid-template-columns: 1fr;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+  }
+}
+
+@media print {
+  nav,
+  .no-print {
+    display: none;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .hero-card,
+  .panel,
+  .card,
+  .weather-banner {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+}
