@@ -30,7 +30,28 @@ const PLACES = new Set([
   "sunny-beach",
 ]);
 
-const HASH_KEY = "location-votes";
+const GROUP_PLACES = new Set([
+  "fuengirola",
+  "adelianos-kampos",
+  "calella",
+  "malgrat-de-mar",
+  "cala-millor",
+  "sa-coma",
+  "marmaris",
+]);
+
+const POOLS = {
+  committee: {
+    hash: "location-votes",
+    places: PLACES,
+    allowed: new Set([1, -1]),
+  },
+  group: {
+    hash: "location-votes-group",
+    places: GROUP_PLACES,
+    allowed: new Set([1, 2]),
+  },
+};
 
 let cached;
 
@@ -66,11 +87,28 @@ function firstLetter(name) {
   return match ? match[0].toUpperCase() : "?";
 }
 
-function summarise(entries, voter) {
+function resolvePool(raw) {
+  return String(raw || "").toLowerCase() === "group" ? "group" : "committee";
+}
+
+function voterChoices(entries, voter, places, allowed) {
+  const mine = {};
+  for (const [field, raw] of Object.entries(entries || {})) {
+    if (!field.startsWith(`${voter}::`)) continue;
+    const place = field.slice(voter.length + 2);
+    if (!places.has(place)) continue;
+    const value = Number(raw);
+    if (!allowed.has(value)) continue;
+    mine[place] = value;
+  }
+  return mine;
+}
+
+function summarise(entries, voter, places, allowed) {
   const totals = {};
   const mine = {};
   const voters = {};
-  for (const place of PLACES) {
+  for (const place of places) {
     totals[place] = 0;
     voters[place] = [];
   }
@@ -79,14 +117,14 @@ function summarise(entries, voter) {
     if (sep < 1) continue;
     const who = field.slice(0, sep);
     const place = field.slice(sep + 2);
-    if (!PLACES.has(place)) continue;
+    if (!places.has(place)) continue;
     const value = Number(raw);
-    if (value !== 1 && value !== -1) continue;
+    if (!allowed.has(value)) continue;
     totals[place] += value;
     voters[place].push({ initial: firstLetter(who), vote: value });
     if (voter && who === voter) mine[place] = value;
   }
-  for (const place of PLACES) {
+  for (const place of places) {
     voters[place].sort((a, b) => {
       if (b.vote !== a.vote) return b.vote - a.vote;
       return a.initial.localeCompare(b.initial);
@@ -102,14 +140,20 @@ export default async function handler(req, res) {
     const db = await redis();
 
     if (req.method === "GET") {
+      const poolName = resolvePool(req.query.pool);
+      const config = POOLS[poolName];
       const voter = nameKey(req.query.name);
-      const entries = (await db.hGetAll(HASH_KEY)) || {};
-      return res.status(200).json(summarise(entries, voter));
+      const entries = (await db.hGetAll(config.hash)) || {};
+      return res
+        .status(200)
+        .json(summarise(entries, voter, config.places, config.allowed));
     }
 
     if (req.method === "POST") {
       const body =
         typeof req.body === "string" ? JSON.parse(req.body) : req.body || {};
+      const poolName = resolvePool(body.pool);
+      const config = POOLS[poolName];
       const voter = nameKey(body.name);
       const place = String(body.place || "");
       const vote = Number(body.vote);
@@ -117,22 +161,56 @@ export default async function handler(req, res) {
       if (!voter) {
         return res.status(400).json({ error: "Enter your name before voting." });
       }
-      if (!PLACES.has(place)) {
+      if (!config.places.has(place)) {
         return res.status(400).json({ error: "Unknown place." });
       }
-      if (vote !== 1 && vote !== -1 && vote !== 0) {
+
+      if (poolName === "group") {
+        if (vote !== 1 && vote !== 2 && vote !== 0) {
+          return res.status(400).json({
+            error: "Vote must be first choice, second choice, or clear.",
+          });
+        }
+      } else if (vote !== 1 && vote !== -1 && vote !== 0) {
         return res.status(400).json({ error: "Vote must be +1, −1, or 0." });
       }
 
       const field = fieldKey(voter, place);
+
       if (vote === 0) {
-        await db.hDel(HASH_KEY, field);
+        await db.hDel(config.hash, field);
+      } else if (poolName === "group") {
+        const current = (await db.hGetAll(config.hash)) || {};
+        const mine = voterChoices(
+          current,
+          voter,
+          config.places,
+          config.allowed,
+        );
+        const others = Object.entries(mine).filter(([id]) => id !== place);
+        if (!mine[place] && others.length >= 2) {
+          return res.status(400).json({
+            error:
+              "You already have a first and second choice. Clear one to change.",
+          });
+        }
+        if (others.some(([, value]) => value === vote)) {
+          return res.status(400).json({
+            error:
+              vote === 2
+                ? "You already have a first choice."
+                : "You already have a second choice.",
+          });
+        }
+        await db.hSet(config.hash, field, String(vote));
       } else {
-        await db.hSet(HASH_KEY, field, String(vote));
+        await db.hSet(config.hash, field, String(vote));
       }
 
-      const entries = (await db.hGetAll(HASH_KEY)) || {};
-      return res.status(200).json(summarise(entries, voter));
+      const entries = (await db.hGetAll(config.hash)) || {};
+      return res
+        .status(200)
+        .json(summarise(entries, voter, config.places, config.allowed));
     }
 
     res.setHeader("Allow", "GET, POST");

@@ -3,6 +3,7 @@ import { paintScores, setupVotes } from "./vote.js";
 
 paintScores();
 setupVotes({
-  storageKey: "committee-voter-name",
-  mode: "committee",
+  storageKey: "group-voter-name",
+  pool: "group",
+  mode: "group",
 });
