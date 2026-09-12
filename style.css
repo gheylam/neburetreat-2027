@@ -460,6 +460,15 @@ h3 {
   font-size: 1.2rem;
 }
 
+.card .country {
+  margin: -4px 0 10px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ocean);
+}
+
 .card .where {
   color: var(--ink-soft);
   font-size: 0.9rem;
