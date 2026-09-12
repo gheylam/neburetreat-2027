@@ -467,6 +467,44 @@ h3 {
   line-height: 1.45;
 }
 
+.locator {
+  margin: 0 0 12px;
+}
+
+.locator-map {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: #d7eef3;
+}
+
+.locator-sea {
+  fill: #d7eef3;
+}
+
+.locator-land {
+  fill: #2a9d8f;
+}
+
+.locator-pin-halo {
+  fill: #fff;
+}
+
+.locator-pin-dot {
+  fill: var(--coral);
+}
+
+.locator figcaption {
+  margin-top: 6px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
 .scores {
   display: grid;
   gap: 6px;
