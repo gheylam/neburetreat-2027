@@ -1,3 +1,6 @@
 {
-  "rewrites": [{ "source": "/group", "destination": "/group.html" }]
+  "rewrites": [
+    { "source": "/group", "destination": "/group.html" },
+    { "source": "/info-pack", "destination": "/info-pack.html" }
+  ]
 }

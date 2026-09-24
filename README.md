@@ -1,10 +1,12 @@
-# Group holiday location briefing
+# Group holiday — location briefing and trip pack
 
-A simple summer-coloured HTML briefing for a 20–30 person UK group trip.
+A simple summer-coloured site for a UK group trip.
 
-It compares the Loveholidays all-inclusive options already shortlisted, against health and safety, transport, beach, shops, hospital access for UK/EU travellers, food, and **late April / early May weather** (planned dates: 30 April–3 May 2027). Places are grouped by coast so the organising committee can drop weak fits before a larger poll.
+- `/` is the committee comparison of Loveholidays all-inclusive options (health, transport, beach, shops, hospital access, food, and late April / early May weather). Shared +/− votes need the Vercel Redis store.
+- `/group` is the shorter group shortlist.
+- `/info-pack` is the live trip pack for **Fuengirola, Sunday 2 May – Wednesday 5 May 2027**, at Hotel Monarque Cendrillón. It has the two board prices (all inclusive and half board), the Sunday-arrival reason, the £19 monthly plan, and the questions people actually ask.
 
-This is a decision aid, not a booking tool and not live hotel prices.
+This is a decision and briefing site, not a booking tool.
 
 ## Run locally
 
@@ -13,14 +15,14 @@ npm install
 npm run dev
 ```
 
-Then open [http://127.0.0.1:43147](http://127.0.0.1:43147).
+Then open [http://127.0.0.1:43147](http://127.0.0.1:43147), [http://127.0.0.1:43147/group](http://127.0.0.1:43147/group), and [http://127.0.0.1:43147/info-pack](http://127.0.0.1:43147/info-pack).
 
-Print the page if you want a paper copy for the committee.
+Print either page if you want a paper copy.
 
-Shared +/− votes on the live site need the Vercel Redis store connected to the project. Local `npm run dev` shows the cards but cannot share votes unless you use `vercel dev`.
+Shared votes on the live comparison page need `REDIS_URL` on the Vercel project. Local `npm run dev` shows the cards but cannot share votes unless you use `vercel dev`.
 
-## What the committee is asked to do
+## What people on the trip pack need to do
 
-1. Decide whether weather or a short flight / easy hospital is the tie-break.
-2. Poll five grouped choices: Fuengirola, Costa Brava town cluster, East Mallorca, Side or Alanya, and Crete.
-3. Re-check [FCDO travel advice](https://www.gov.uk/foreign-travel-advice) before anyone pays a deposit.
+1. Confirm two days of annual leave (Monday 3 and Tuesday 4 May 2027).
+2. Vote all inclusive vs half board on the WhatsApp poll — there is no default board.
+3. Say they are in by Friday 2 October and start the £19-a-month plan.

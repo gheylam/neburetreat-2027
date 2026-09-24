@@ -4,13 +4,16 @@ import { defineConfig } from "vite";
 
 const root = dirname(fileURLToPath(import.meta.url));
 
-function groupPath() {
+function prettyPaths() {
   return {
-    name: "group-path",
+    name: "pretty-paths",
     configureServer(server) {
       server.middlewares.use((req, _res, next) => {
         if (req.url === "/group" || req.url === "/group/") {
           req.url = "/group.html";
+        }
+        if (req.url === "/info-pack" || req.url === "/info-pack/") {
+          req.url = "/info-pack.html";
         }
         next();
       });
@@ -19,6 +22,9 @@ function groupPath() {
       server.middlewares.use((req, _res, next) => {
         if (req.url === "/group" || req.url === "/group/") {
           req.url = "/group.html";
+        }
+        if (req.url === "/info-pack" || req.url === "/info-pack/") {
+          req.url = "/info-pack.html";
         }
         next();
       });
@@ -37,12 +43,13 @@ export default defineConfig({
     port: 43147,
     strictPort: true,
   },
-  plugins: [groupPath()],
+  plugins: [prettyPaths()],
   build: {
     rollupOptions: {
       input: {
         main: resolve(root, "index.html"),
         group: resolve(root, "group.html"),
+        "info-pack": resolve(root, "info-pack.html"),
       },
     },
   },
