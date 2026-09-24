@@ -104,6 +104,11 @@ h1 {
   color: var(--ink-soft);
 }
 
+.pack-link {
+  margin: 16px 0 0;
+  font-weight: 700;
+}
+
 .meta {
   display: flex;
   flex-wrap: wrap;
@@ -642,6 +647,167 @@ footer {
   .voter-wrap {
     top: 42px;
   }
+
+  .photo-grid,
+  .price-grid,
+  .date-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .photo img,
+  .photo-wide img {
+    height: 200px;
+  }
+}
+
+.pack .lede-inline {
+  font-size: 1.12rem;
+  margin-top: 0;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 18px 0 22px;
+}
+
+.photo {
+  margin: 0;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.photo-wide {
+  grid-column: 1 / -1;
+}
+
+.photo img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.photo-wide img {
+  height: 320px;
+}
+
+.photo figcaption {
+  padding: 8px 12px 10px;
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+}
+
+.map-wrap .map {
+  display: block;
+  width: 100%;
+  height: 320px;
+  border: 0;
+  border-radius: 14px;
+  margin-top: 10px;
+}
+
+.date-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.date-tile {
+  background: #e8f7fb;
+  border-radius: 14px;
+  padding: 12px;
+  font-size: 0.95rem;
+}
+
+.date-tile strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.flight-times {
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+.price-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.price-card {
+  background: var(--paper);
+  border: 2px solid #ffd166;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+.price-figure {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin: 8px 0 0;
+  line-height: 1;
+}
+
+.price-figure span {
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.price-single {
+  margin: 8px 0 14px;
+  color: var(--ink-soft);
+  font-weight: 700;
+}
+
+.price-card ul,
+.extras ul,
+.steps {
+  padding-left: 1.15rem;
+}
+
+.price-card li,
+.extras li,
+.steps li {
+  margin-bottom: 8px;
+}
+
+.deadline {
+  margin-top: 16px;
+  background: #fff1c9;
+  border: 2px solid #ffd166;
+  border-radius: 16px;
+  padding: 14px 16px;
+  font-size: 1.05rem;
+}
+
+.faq details {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow);
+}
+
+.faq summary {
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.faq details p {
+  margin: 10px 0 4px;
 }
 
 @media print {
