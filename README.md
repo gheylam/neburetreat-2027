@@ -23,6 +23,6 @@ Shared votes on the live comparison page need `REDIS_URL` on the Vercel project.
 
 ## What people on the trip pack need to do
 
-1. Confirm two days of annual leave (Monday 3 and Tuesday 4 May 2027).
+1. Confirm Tuesday 4 May 2027 as annual leave (Monday 3 May is a UK bank holiday).
 2. Vote all inclusive vs half board on the WhatsApp poll — there is no default board.
 3. Say they are in by Friday 2 October and start the £19-a-month plan.
