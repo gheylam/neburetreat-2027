@@ -771,14 +771,26 @@ footer {
   font-weight: 700;
 }
 
+.consider {
+  margin-top: 16px;
+  background: #fff8eb;
+  border: 2px solid #f4a261;
+}
+
+.consider h3 {
+  margin-top: 0;
+}
+
 .price-card ul,
 .extras ul,
+.consider ul,
 .steps {
   padding-left: 1.15rem;
 }
 
 .price-card li,
 .extras li,
+.consider li,
 .steps li {
   margin-bottom: 8px;
 }
